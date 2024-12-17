@@ -1,12 +1,14 @@
 package com.mysite.sbb_practice4.question;
 
 import com.mysite.sbb_practice4.answer.Answer;
+import com.mysite.sbb_practice4.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -30,6 +32,10 @@ public class Question {
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
 
+    @ManyToOne
+    private SiteUser author;
 
+    @ManyToMany
+    private Set<SiteUser> voter;
 
 }
